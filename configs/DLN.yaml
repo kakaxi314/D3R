@@ -1,0 +1,44 @@
+batch_size: 32
+data_config:
+  color_lmdb:
+    noise:
+    - 4
+    - 8
+    - 12
+    - 16
+    - 20
+    path: datas/color
+    pf: 4
+    uf: 8
+gpu_ids:
+- 6
+loss: MSE
+lr_config:
+  MultiStepLR:
+    gamma: 0.5
+    last_epoch: -1
+    milestones:
+    - 4
+    - 7
+manual_seed: 0
+metric: PSNR
+model: DL
+name: DLN
+nepoch: 10
+num_workers: 4
+optim_config:
+  AdamW:
+    lr: 0.001
+    weight_decay: 0.01
+resume_seed: 6050
+start_epoch: 0
+test_aug_configs:
+- Ident
+test_epoch: 9
+test_iters: 4000
+train_aug_configs:
+- HFlip
+- VFlip
+- Rotate
+vis: true
+vis_iters: 100
